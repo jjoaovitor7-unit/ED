@@ -75,7 +75,12 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
     }
 
     public T recuperar(int posicao) {
-        return this.vetor[posicao];
+        if (vazio() || this.vetor[posicao] == null) {
+            throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
+        }
+        else {
+            return this.vetor[posicao];
+        }
     }
 
     public bool vazio() {
@@ -88,24 +93,41 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
     }
 
     public void remove(int posicao) {
-        this.vetor[posicao] = null;
-        this._Tamanho--;
-        for (int i=posicao; i < tamanho(); i++) {
-            this.vetor[i] = vetor[i+1];
+        if (vazio() || this.vetor[posicao] == null) {
+            throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
+        }
+
+        else {
+            this.vetor[posicao] = null;
+            this._Tamanho--;
+            for (int i=posicao; i < tamanho(); i++) {
+                this.vetor[i] = vetor[i+1];
+            }
         }
     }
 
     public void removeInicio() {
-        this.vetor[0] = null;
-        for (int i=0; i < tamanho(); i++) {
-            vetor[i] = vetor[i+1];
+        if (vazio() || this.vetor[0] == null) {
+            throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
         }
-        this._Tamanho--;
+
+        else {
+            this.vetor[0] = null;
+            for (int i=0; i < tamanho(); i++) {
+                vetor[i] = vetor[i+1];
+            }
+            this._Tamanho--;
+        }
     }
 
     public void removeFim() {
-        this.vetor[tamanho()] = null;
-        this._Tamanho--;
+        if (vazio() || this.vetor[tamanho()-1] == null) {
+            throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
+        }
+        else {
+            this.vetor[tamanho()] = null;
+            this._Tamanho--;
+        }
     }
 
     public int tamanho() {
@@ -125,12 +147,5 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
             _vetor[i] = this.vetor[i];
         }
         this.vetor = _vetor;
-    }
-
-    public void printarVetor() {
-        Console.WriteLine(this._Tamanho);
-        for (int i=0; i < this._Tamanho; i++) {
-            Console.WriteLine(vetor[i].Nome);
-        }
     }
 }
