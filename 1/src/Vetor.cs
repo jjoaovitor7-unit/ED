@@ -24,8 +24,16 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
 
         else {
             this.vetor[posicao+=1] = this.vetor[posicao];
-            for (int i=posicao+1; i >= posicao; i--) {
-                this.vetor[i+1] = this.vetor[i];
+            
+            int i=posicao+1;
+
+            IEnumerator it = this.vetor.GetEnumerator();
+
+            while (it.MoveNext()) {
+                while (i >= posicao) {
+                    this.vetor[i+1] = this.vetor[i];
+                    i--;
+                }
             }
 
             this.vetor[posicao] = elemento;
@@ -43,13 +51,19 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
             this.vetor[0] = elemento;
         }
         else {
-            for (int i=tamanho(); i > -1; i--) {
-                if (i >= 0) {
-                    this.vetor[i+1] = this.vetor[i];
-                }
+            IEnumerator it = this.vetor.GetEnumerator();
 
-                if (i == 0) {
-                    this.vetor[0] = elemento;
+            int i=tamanho();
+            while (it.MoveNext()) {
+                while (i > -1) {
+                    if (i >= 0) {
+                        this.vetor[i+1] = this.vetor[i];
+                    }
+
+                    if (i == 0) {
+                        this.vetor[0] = elemento;
+                    }
+                    i--;
                 }
             }
             this._Tamanho ++;
@@ -100,8 +114,14 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
         else {
             this.vetor[posicao] = null;
             this._Tamanho--;
-            for (int i=posicao; i < tamanho(); i++) {
-                this.vetor[i] = vetor[i+1];
+            IEnumerator it = this.vetor.GetEnumerator();
+
+            int i=posicao;
+            while (it.MoveNext()) {
+                while (i < tamanho()) {
+                    this.vetor[i] = vetor[i+1];
+                    i++;
+                }
             }
         }
     }
@@ -113,9 +133,17 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
 
         else {
             this.vetor[0] = null;
-            for (int i=0; i < tamanho(); i++) {
-                vetor[i] = vetor[i+1];
+
+            IEnumerator it = this.vetor.GetEnumerator();
+
+            int i=0;
+            while (it.MoveNext()) {
+                while (i < tamanho()) {
+                    vetor[i] = vetor[i+1];
+                    i++;
+                }
             }
+            
             this._Tamanho--;
         }
     }
@@ -135,17 +163,30 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
     }
 
     public void limpar() {
-        for (int i=0; i < this._Tamanho; i++) {
+        IEnumerator it = this.vetor.GetEnumerator();
+
+        int i=0;
+        while (it.MoveNext()) {
             this.vetor[i] = null;
+            i++;
         }
+
         this._Tamanho = 0;
     }
 
     public void redimensionar() {
         T[] _vetor = new T[this._Tamanho*2];
-        for (int i=0; i < this.vetor.Length; i++) {
-            _vetor[i] = this.vetor[i];
+
+        IEnumerator it = this.vetor.GetEnumerator();
+
+        int i=0;
+        while (it.MoveNext()) {
+            while (i < this.vetor.Length) {
+                _vetor[i] = this.vetor[i];
+                i++;
+            }
         }
+
         this.vetor = _vetor;
     }
 }
