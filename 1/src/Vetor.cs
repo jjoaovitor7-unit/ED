@@ -51,6 +51,7 @@ namespace src {
 
             if (this.vetor[0] == null) {
                 this.vetor[0] = elemento;
+                this._Tamanho++;
             }
             else {
                 IEnumerator it = this.vetor.GetEnumerator();
@@ -68,7 +69,7 @@ namespace src {
                         i--;
                     }
                 }
-                this._Tamanho ++;
+                this._Tamanho++;
             }
         }
 
@@ -135,7 +136,6 @@ namespace src {
 
             else {
                 this.vetor[0] = default(T);
-
                 IEnumerator it = this.vetor.GetEnumerator();
 
                 int i=0;
@@ -145,7 +145,7 @@ namespace src {
                         i++;
                     }
                 }
-                
+
                 this._Tamanho--;
             }
         }
