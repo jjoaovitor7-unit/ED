@@ -9,4 +9,4 @@ Para executar o programa:
 * mono 1.exe
 
 Para executar os testes:
-    dotnet test src/VetorTest.csproj
+* dotnet test src/VetorTest.csproj
