@@ -27,11 +27,9 @@ public class Vetor<T> : IVetor<T> {
             }
             else {
                 this.vetor[posicao+=1] = this.vetor[posicao];
-
-                int i=posicao+1;
-
                 IEnumerator it = this.vetor.GetEnumerator();
 
+                int i=posicao+1;
                 while (it.MoveNext()) {
                     while (i >= posicao) {
                         this.vetor[i+1] = this.vetor[i];
@@ -179,7 +177,6 @@ public class Vetor<T> : IVetor<T> {
 
     public void redimensionar() {
         T[] _vetor = new T[this._Tamanho*2];
-
         IEnumerator it = this.vetor.GetEnumerator();
 
         int i=0;
@@ -189,7 +186,6 @@ public class Vetor<T> : IVetor<T> {
                 i++;
             }
         }
-
         this.vetor = _vetor;
     }
 }
