@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-public class Vetor<T> : IVetor<T> where T : Aluno {
+public class Vetor<T> : IVetor<T> {
     private int _Tamanho { set; get; }
     private T[] vetor;
 
@@ -112,7 +112,7 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
         }
 
         else {
-            this.vetor[posicao] = null;
+            this.vetor[posicao] = default(T);
             this._Tamanho--;
             IEnumerator it = this.vetor.GetEnumerator();
 
@@ -132,7 +132,7 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
         }
 
         else {
-            this.vetor[0] = null;
+            this.vetor[0] = default(T);
 
             IEnumerator it = this.vetor.GetEnumerator();
 
@@ -153,7 +153,7 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
             throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
         }
         else {
-            this.vetor[tamanho()] = null;
+            this.vetor[tamanho()] = default(T);
             this._Tamanho--;
         }
     }
@@ -167,7 +167,7 @@ public class Vetor<T> : IVetor<T> where T : Aluno {
 
         int i=0;
         while (it.MoveNext()) {
-            this.vetor[i] = null;
+            this.vetor[i] = default(T);
             i++;
         }
 
