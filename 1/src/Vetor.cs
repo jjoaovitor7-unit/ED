@@ -13,33 +13,36 @@ public class Vetor<T> : IVetor<T> {
     }
 
     public void adiciona(T elemento, int posicao) {
-        if (tamanho() == this.vetor.Length) {
-            redimensionar();
+        if (posicao < 0) {
+            throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
         }
-
-        if (this.vetor[posicao] == null) {
-            this.vetor[posicao] = elemento;
-            this._Tamanho++;
-        }
-
         else {
-            this.vetor[posicao+=1] = this.vetor[posicao];
-            
-            int i=posicao+1;
-
-            IEnumerator it = this.vetor.GetEnumerator();
-
-            while (it.MoveNext()) {
-                while (i >= posicao) {
-                    this.vetor[i+1] = this.vetor[i];
-                    i--;
-                }
+            if (tamanho() == this.vetor.Length) {
+                redimensionar();
             }
 
-            this.vetor[posicao] = elemento;
-            this._Tamanho++;
+            if (this.vetor[posicao] == null) {
+                this.vetor[posicao] = elemento;
+                this._Tamanho++;
+            }
+            else {
+                this.vetor[posicao+=1] = this.vetor[posicao];
+
+                int i=posicao+1;
+
+                IEnumerator it = this.vetor.GetEnumerator();
+
+                while (it.MoveNext()) {
+                    while (i >= posicao) {
+                        this.vetor[i+1] = this.vetor[i];
+                        i--;
+                    }
+                }
+
+                this.vetor[posicao] = elemento;
+                this._Tamanho++;
+            }
         }
- 
     }
 
     public void adicionaInicio(T elemento) {
@@ -89,7 +92,7 @@ public class Vetor<T> : IVetor<T> {
     }
 
     public T recuperar(int posicao) {
-        if (vazio() || this.vetor[posicao] == null) {
+        if (vazio() || this.vetor[posicao] == null || posicao < 0) {
             throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
         }
         else {
@@ -107,7 +110,7 @@ public class Vetor<T> : IVetor<T> {
     }
 
     public void remove(int posicao) {
-        if (vazio() || this.vetor[posicao] == null) {
+        if (vazio() || this.vetor[posicao] == null || posicao < 0) {
             throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
         }
 
