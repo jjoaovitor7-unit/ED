@@ -1,15 +1,11 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using src;
 
-namespace VetorTest
-{
+namespace src {
     [TestClass]
-    public class UnitTest
-    {
+    public class UnitTest {
         [TestMethod]
-        public void AdicionandoElementoNaPosicaoERecuperandoElementoNaPosicaoNoVetor()
-        {
+        public void AdicionandoElementoNaPosicaoERecuperandoElementoNaPosicaoNoVetor() {
             Aluno a1 = new Aluno("A1", 18);
             Vetor<Aluno> v = new Vetor<Aluno>(1);
             v.adiciona(a1, 0);
@@ -17,8 +13,7 @@ namespace VetorTest
         }
 
         [TestMethod]
-        public void AdicionadoElementoNaPosicaoELimpandoVetor()
-        {
+        public void AdicionandoElementoNaPosicaoELimpandoVetor() {
             Aluno a1 = new Aluno("A1", 18);
             Vetor<Aluno> v = new Vetor<Aluno>(1);
             v.adiciona(a1, 0);
@@ -34,8 +29,7 @@ namespace VetorTest
         }
 
         [TestMethod]
-        public void AdicionadoElementoNaPosicaoERemovendoElementoNaPosicao()
-        {
+        public void AdicionandoElementoNaPosicaoERemovendoElementoNaPosicao() {
             Aluno a1 = new Aluno("A1", 18);
             Aluno a2 = new Aluno("A2", 20);
             Vetor<Aluno> v = new Vetor<Aluno>(3);
