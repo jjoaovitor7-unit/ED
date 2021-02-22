@@ -1,4 +1,5 @@
 using System;
+using src;
 
 class Program {
     public static void Main(string[] args) {
@@ -16,13 +17,6 @@ class Program {
         v.adiciona(a4, 3);
         v.adiciona(a5, 4);
         v.adiciona(a6, 5);
-        v.limpar();
-
-        v.adiciona(a1, 0);
-        v.adiciona(a2, 1);
-        v.adicionaInicio(a3);
-        v.adicionaFim(a4);
-        v.remove(0);
 
         Console.WriteLine("Elementos do Vetor: ");
         for (int i=0; i < v.tamanho(); i++) {

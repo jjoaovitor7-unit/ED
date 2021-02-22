@@ -14,7 +14,7 @@ namespace src {
         }
 
         public void adiciona(T elemento, int posicao) {
-            if (posicao < 0) {
+            if (posicao < 0 || posicao > this.vetor.Length) {
                 throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
             }
             else {
@@ -110,7 +110,7 @@ namespace src {
         }
 
         public void remove(int posicao) {
-            if (vazio() || this.vetor[posicao] == null || posicao < 0) {
+            if (vazio() || this.vetor[posicao] == null || posicao < 0 || posicao > this.vetor.Length) {
                 throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
             }
 
