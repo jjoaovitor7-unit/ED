@@ -27,11 +27,8 @@ namespace src {
                     object aux = atual.Elemento;
                     atual.Elemento = elemento;
                     atual.Proxima.Elemento = aux;
-                    if (i == (posicao-1)) {
-                        this.Tamanho++;
-                        break;
-                    }
                 }
+                this.Tamanho++;
             }
         }
 
