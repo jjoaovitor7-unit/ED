@@ -128,8 +128,16 @@ namespace src {
 
             else {
                 Celula atual = this.primeiro;
-                for (int i=0; i < this.Tamanho; i++) {
-                    atual.Proxima = atual.Proxima.Proxima;
+                Celula aux = this.pegaCelula(posicao-2);
+                Celula aux2 = this.pegaCelula(posicao);
+                for (int i=0; i <= posicao; i++) {
+                    atual = atual.Proxima;
+                    if (i == posicao) {
+                        if (atual != null) {
+                            atual = aux;
+                            atual.Proxima = aux2;
+                        }
+                    }
                 }
                 this.Tamanho--;
             }
@@ -164,9 +172,7 @@ namespace src {
 
             else {
                 this.Tamanho--;
-
                 Celula atual = this.primeiro;
-
                 for (int i=0; i != this.Tamanho-1; i++) {
                     atual = atual.Proxima;
                     this.ultimo = atual;
