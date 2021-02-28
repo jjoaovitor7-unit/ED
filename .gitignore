@@ -1,4 +1,7 @@
 1/src/bin
 1/src/obj
 1/src/TestResults
+2/src/bin
+2/src/obj
+2/src/TestResults
 *.exe

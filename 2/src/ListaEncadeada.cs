@@ -21,7 +21,7 @@ namespace src {
         }
 
         public void adiciona(T elemento, int posicao) {
-            if (this.Tamanho == 0 || posicao < 0 || posicao >= this.Tamanho) {
+            if (this.Tamanho == 0 || posicao < 0 || posicao > this.Tamanho) {
                 throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
             }
             
