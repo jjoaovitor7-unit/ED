@@ -12,6 +12,14 @@ namespace src {
             this.Tamanho = 0;
         }
 
+        private Celula pegaCelula(int posicao) {
+            Celula atual = this.primeiro;
+            for (int i=0; i <= posicao; i++) {
+                atual = atual.Proxima;
+            }
+            return atual;
+        }
+
         public void adiciona(T elemento, int posicao) {
             if (this.Tamanho == 0 || posicao < 0 || posicao >= this.Tamanho) {
                 throw new ArgumentOutOfRangeException("Argumento fora de alcance.");
@@ -27,12 +35,18 @@ namespace src {
             
             else {
                 Celula atual = this.primeiro;
-                for (int i=0; i < this.Tamanho; i++) {
+                Celula aux = this.pegaCelula(posicao-2);
+                Celula newCelula = new Celula(elemento);
+                for (int i=0; i <= posicao; i++) {
                     atual = atual.Proxima;
-                    Celula aux = atual;
-                    atual.Elemento = elemento;
-                    atual.Proxima = aux;
+                    if (i == posicao) {
+                        if (atual != null) {
+                            newCelula.Proxima = aux.Proxima;
+                            aux.Proxima = newCelula;
+                        }
+                    }
                 }
+
                 this.Tamanho++;
             }
         }
@@ -116,11 +130,8 @@ namespace src {
                 Celula atual = this.primeiro;
                 for (int i=0; i < this.Tamanho; i++) {
                     atual.Proxima = atual.Proxima.Proxima;
-                    if (i == (posicao-1)) {
-                        this.Tamanho--;
-                        break;
-                    }
                 }
+                this.Tamanho--;
             }
         }
 

@@ -8,11 +8,18 @@ class Program {
         Aluno a3 = new Aluno("A3", 42);
 
         ListaEncadeada<Aluno> lista = new ListaEncadeada<Aluno>();
-        lista.adicionaInicio(a1);
-        lista.adicionaInicio(a3);
-        lista.adicionaInicio(a2);
-        lista.adiciona(a1, 0);
-        Console.WriteLine(lista.tamanho());
-        Console.WriteLine(lista.recupera(3).Nome);
+        lista.adicionaInicio(a2); // a2
+        lista.adicionaInicio(a3); // a3 a2
+        lista.adicionaInicio(a2); // a2 a3 a2
+        lista.adiciona(a2, 1); // a2 a2 a3 a2
+        lista.adiciona(a1, 1); // a2 a1 a2 a3 a2
+        lista.adiciona(a1, 0); // a1 a2 a1 a2 a3 a2
+        lista.adiciona(a1, 1); // a1 a1 a2 a1 a2 a3 a2
+
+        Console.WriteLine($"Minha lista: {lista.tamanho()}");
+        for (int i=0; i < lista.tamanho(); i++) {
+            Console.Write(lista.recupera(i).Nome + " ");
+        }
+        Console.WriteLine();
     }
 }
