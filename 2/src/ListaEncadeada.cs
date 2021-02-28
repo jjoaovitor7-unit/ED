@@ -69,9 +69,7 @@ namespace src {
             Celula newCelula = new Celula(elemento);
             
             if (this.Tamanho == 0) {
-                this.primeiro = this.ultimo;
-                this.ultimo = newCelula;
-                this.Tamanho++;
+               adicionaInicio(elemento);
             }
             else {
                 this.ultimo.Proxima = newCelula;
