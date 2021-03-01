@@ -1,0 +1,14 @@
+name: dotnet-tests
+on: [push,  pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.101'
+      - run: dotnet test ./1/src/VetorTest.csproj
+      - run: dotnet test ./2/src/ListaEncadeadaTest.csproj
