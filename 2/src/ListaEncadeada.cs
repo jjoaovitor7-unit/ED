@@ -14,9 +14,15 @@ namespace src {
 
         private Celula pegaCelula(int posicao) {
             Celula atual = this.primeiro;
-            for (int i=0; i <= posicao; i++) {
-                atual = atual.Proxima;
+            Iterador<T> it = new Iterador<T>(atual);
+            while (it.hasNext()) {
+                for (int i=0; i <= posicao; i++) {
+                    atual = atual.Proxima;
+                }
+                break;
+                it.next();
             }
+            
             return atual;
         }
 
@@ -37,16 +43,20 @@ namespace src {
                 Celula atual = this.primeiro;
                 Celula aux = this.pegaCelula(posicao-2);
                 Celula newCelula = new Celula(elemento);
-                for (int i=0; i <= posicao; i++) {
-                    atual = atual.Proxima;
-                    if (i == posicao) {
-                        if (atual != null) {
-                            newCelula.Proxima = aux.Proxima;
-                            aux.Proxima = newCelula;
+                Iterador<T> it = new Iterador<T>(atual);
+                while (it.hasNext()) {
+                    for (int i=0; i <= posicao; i++) {
+                        atual = atual.Proxima;
+                        if (i == posicao) {
+                            if (atual != null) {
+                                newCelula.Proxima = aux.Proxima;
+                                aux.Proxima = newCelula;
+                            }
                         }
                     }
+                    break;
+                    it.next();
                 }
-
                 this.Tamanho++;
             }
         }
@@ -81,19 +91,23 @@ namespace src {
         public bool existeDado(T elemento) {
             Celula atual = this.primeiro;
             bool cond = false;
-            for (int i=0; i < this.Tamanho; i++) {
+            Iterador<T> it = new Iterador<T>(atual);
+            while (it.hasNext()) {
+                for (int i=0; i < this.Tamanho; i++) {
+                    if (atual.Elemento.Equals(elemento)) {
+                        cond = true;
+                        break;
+                    }
 
-                if (atual.Elemento.Equals(elemento)) {
-                    cond = true;
-                    break;
+                    if (atual.Proxima != null) {
+                        atual = atual.Proxima;
+                    }
+                    else {
+                        break;
+                    }
                 }
-
-                if (atual.Proxima != null) {
-                    atual = atual.Proxima;
-                }
-                else {
-                    break;
-                }
+                break;
+                it.next();
             }
             return cond;
         }
@@ -104,10 +118,15 @@ namespace src {
             }
             else {
                 Celula atual = this.primeiro;
-                for (int i=0; i < posicao; i++) {
-                    if (atual.Proxima != null) {
-                        atual = atual.Proxima;
-                    }                
+                Iterador<T> it = new Iterador<T>(atual);
+                while (it.hasNext()) {
+                    for (int i=0; i < posicao; i++) {
+                        if (atual.Proxima != null) {
+                            atual = atual.Proxima;
+                        }                
+                    }
+                    break;
+                    it.next();
                 }
                 return (T)(object) atual.Elemento;
             }
@@ -128,14 +147,19 @@ namespace src {
                 Celula atual = this.primeiro;
                 Celula aux = this.pegaCelula(posicao-2);
                 Celula aux2 = this.pegaCelula(posicao);
-                for (int i=0; i <= posicao; i++) {
-                    atual = atual.Proxima;
-                    if (i == posicao) {
-                        if (atual != null) {
-                            atual = aux;
-                            atual.Proxima = aux2;
+                Iterador<T> it = new Iterador<T>(atual);
+                while (it.hasNext()) {
+                    for (int i=0; i <= posicao; i++) {
+                        atual = atual.Proxima;
+                        if (i == posicao) {
+                            if (atual != null) {
+                                atual = aux;
+                                atual.Proxima = aux2;
+                            }
                         }
                     }
+                    break;
+                    it.next();
                 }
                 this.Tamanho--;
             }
@@ -171,9 +195,14 @@ namespace src {
             else {
                 this.Tamanho--;
                 Celula atual = this.primeiro;
-                for (int i=0; i != this.Tamanho-1; i++) {
-                    atual = atual.Proxima;
-                    this.ultimo = atual;
+                Iterador<T> it = new Iterador<T>(atual);
+                while (it.hasNext()) {
+                    for (int i=0; i != this.Tamanho-1; i++) {
+                        atual = atual.Proxima;
+                        this.ultimo = atual;
+                    }
+                    break;
+                    it.next();
                 }
             }
         }

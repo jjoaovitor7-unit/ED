@@ -36,6 +36,7 @@ namespace src {
                             this.vetor[i+1] = this.vetor[i];
                             i--;
                         }
+                        break;
                     }
 
                     this.vetor[posicao] = elemento;
@@ -68,6 +69,7 @@ namespace src {
                         }
                         i--;
                     }
+                    break;
                 }
                 this._Tamanho++;
             }
@@ -125,6 +127,7 @@ namespace src {
                         this.vetor[i] = vetor[i+1];
                         i++;
                     }
+                    break;
                 }
             }
         }
@@ -144,6 +147,7 @@ namespace src {
                         vetor[i] = vetor[i+1];
                         i++;
                     }
+                    break;
                 }
 
                 this._Tamanho--;
@@ -186,6 +190,7 @@ namespace src {
                     _vetor[i] = this.vetor[i];
                     i++;
                 }
+                break;
             }
             this.vetor = _vetor;
         }
