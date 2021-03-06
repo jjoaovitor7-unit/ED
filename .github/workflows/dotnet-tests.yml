@@ -12,4 +12,4 @@ jobs:
           dotnet-version: '5.0.101'
       - run: dotnet test ./1/src/VetorTest.csproj
       - run: dotnet test ./2/src/ListaEncadeadaTest.csproj
-      - run: dotnet test ./3/src/ListaDuplamenteEncadeada.csproj
+      - run: dotnet test ./3/src/ListaDuplamenteEncadeadaTest.csproj
