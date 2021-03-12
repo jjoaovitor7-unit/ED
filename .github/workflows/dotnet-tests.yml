@@ -13,3 +13,4 @@ jobs:
       - run: dotnet test ./1/src/VetorTest.csproj
       - run: dotnet test ./2/src/ListaEncadeadaTest.csproj
       - run: dotnet test ./3/src/ListaDuplamenteEncadeadaTest.csproj
+      - run: dotnet test ./4/src/ListaDuplamenteEncadeadaComNoCabecaTest.csproj
